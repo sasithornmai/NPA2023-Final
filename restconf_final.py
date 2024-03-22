@@ -89,6 +89,9 @@ def enable():
     if(resp.status_code >= 200 and resp.status_code <= 299):
         print("STATUS OK: {}".format(resp.status_code))
         return "Interface loopback 64070106 is enabled successfully"
+    elif(resp.status_code >= 400 and resp.status_code <= 500):
+        print("STATUS OK: {}".format(resp.status_code))
+        return "Cannot enable: Interface loopback 64070106"
     else:
         print('Error. Status Code: {}'.format(resp.status_code))
 
@@ -112,6 +115,9 @@ def disable():
     if(resp.status_code >= 200 and resp.status_code <= 299):
         print("STATUS OK: {}".format(resp.status_code))
         return "Interface loopback 64070106 is shutdowned successfully"
+    elif(resp.status_code >= 400 and resp.status_code <= 500):
+        print("STATUS OK: {}".format(resp.status_code))
+        return "Cannot shutdown: Interface loopback 64070106"
     else:
         print('Error. Status Code: {}'.format(resp.status_code))
 
