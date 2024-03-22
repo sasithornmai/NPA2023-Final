@@ -85,10 +85,12 @@ while True:
         elif command == "enable":
             responseMessage = restconf_final.enable()
             print("test ",responseMessage) 
-        # elif command == "disable":
-        #     <!!!REPLACEME with code for disable command!!!>
-        # elif command == "status":
-        #     <!!!REPLACEME with code for status command!!!>
+        elif command == "disable":
+            responseMessage = restconf_final.disable()
+            print("test ",responseMessage) 
+        elif command == "status":
+            responseMessage = restconf_final.status()
+            print("test ",responseMessage) 
         else:
             responseMessage = "Error: No command or unknown command"
         

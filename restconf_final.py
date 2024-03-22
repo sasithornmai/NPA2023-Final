@@ -87,22 +87,27 @@ def enable():
         print('Error. Status Code: {}'.format(resp.status_code))
 
 
-# def disable():
-#     yangConfig = <!!!REPLACEME with YANG data!!!>
+def disable():
+    yangConfig = {
+        "ietf-interfaces:interface": {
+            "name": "Loopback64070106",
+            "enabled": False
+        }
+    }
 
-#     resp = requests.<!!!REPLACEME with the proper HTTP Method!!!>(
-#         <!!!REPLACEME with URL!!!>, 
-#         data=json.dumps(<!!!REPLACEME with yangConfig!!!>), 
-#         auth=basicauth, 
-#         headers=<!!!REPLACEME with HTTP Header!!!>, 
-#         verify=False
-#         )
+    resp = requests.patch(
+        api_url, 
+        data=json.dumps(yangConfig), 
+        auth=basicauth, 
+        headers=headers, 
+        verify=False
+        )
 
-#     if(resp.status_code >= 200 and resp.status_code <= 299):
-#         print("STATUS OK: {}".format(resp.status_code))
-#         return "<!!!REPLACEME with proper message!!!>"
-#     else:
-#         print('Error. Status Code: {}'.format(resp.status_code))
+    if(resp.status_code >= 200 and resp.status_code <= 299):
+        print("STATUS OK: {}".format(resp.status_code))
+        return "Interface loopback 64070106 is shutdowned successfully"
+    else:
+        print('Error. Status Code: {}'.format(resp.status_code))
 
 
 # def status():
@@ -121,11 +126,11 @@ def enable():
 #         admin_status = <!!!REPLACEME!!!>
 #         oper_status = <!!!REPLACEME!!!>
 #         if admin_status == 'up' and oper_status == 'up':
-#             return "<!!!REPLACEME with proper message!!!>"
+#             return "Interface loopback 64070106 is enabled"
 #         elif admin_status == 'down' and oper_status == 'down':
-#             return "<!!!REPLACEME with proper message!!!>"
+#             return "Interface loopback 64070106 is disabled"
 #     elif(resp.status_code == 404):
 #         print("STATUS NOT FOUND: {}".format(resp.status_code))
-#         return "<!!!REPLACEME with proper message!!!>"
+#         return "No Interface loopback 64070106"
 #     else:
 #         print('Error. Status Code: {}'.format(resp.status_code))
