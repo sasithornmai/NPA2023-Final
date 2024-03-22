@@ -79,8 +79,9 @@ while True:
         if command == "create":
             responseMessage = restconf_final.create()  
             print("test ",responseMessage)  
-        # elif command == "delete":
-        #     <!!!REPLACEME with code for delete command!!!>
+        elif command == "delete":
+            responseMessage = restconf_final.delete()
+            print("test ",responseMessage) 
         # elif command == "enable":
         #     <!!!REPLACEME with code for enable command!!!>
         # elif command == "disable":
